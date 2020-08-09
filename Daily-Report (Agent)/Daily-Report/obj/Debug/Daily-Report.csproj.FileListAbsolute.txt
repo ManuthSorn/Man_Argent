@@ -1,0 +1,9 @@
+D:\Data Manulife 2018\Dialy-Report\Daily-Report\Daily-Report\Daily-Report\bin\Debug\Daily-Report.exe.config
+D:\Data Manulife 2018\Dialy-Report\Daily-Report\Daily-Report\Daily-Report\bin\Debug\Daily-Report.exe
+D:\Data Manulife 2018\Dialy-Report\Daily-Report\Daily-Report\Daily-Report\bin\Debug\Daily-Report.pdb
+D:\Data Manulife 2018\Dialy-Report\Daily-Report\Daily-Report\Daily-Report\obj\Debug\Daily-Report.csprojResolveAssemblyReference.cache
+D:\Data Manulife 2018\Dialy-Report\Daily-Report\Daily-Report\Daily-Report\obj\Debug\Daily_Report.Form1.resources
+D:\Data Manulife 2018\Dialy-Report\Daily-Report\Daily-Report\Daily-Report\obj\Debug\Daily_Report.Properties.Resources.resources
+D:\Data Manulife 2018\Dialy-Report\Daily-Report\Daily-Report\Daily-Report\obj\Debug\Daily-Report.csproj.GenerateResource.Cache
+D:\Data Manulife 2018\Dialy-Report\Daily-Report\Daily-Report\Daily-Report\obj\Debug\Daily-Report.exe
+D:\Data Manulife 2018\Dialy-Report\Daily-Report\Daily-Report\Daily-Report\obj\Debug\Daily-Report.pdb
