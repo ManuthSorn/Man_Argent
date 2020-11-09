@@ -60,7 +60,7 @@ namespace Daily_Report
             //int colCount2 = xlRange2.Columns.Count;
             //Add Header
             //String[] ABC = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W" };
-            String[] Header_Name = { "BU", "Touchpoint", "Agent List Batch Number", "Dummy ID", "Agent Name", "Agent's Number", "Agent's Gender", "Channel", "Owner Name", "Owner's Gender", "Policy Number", "Product Name", "Interview Date", "Interviewer ID", "Call Outcome", "S1.Policy document status", "Q1 Recommend Advisor career", "Q2 Recommend Advisor Career Verbatim", "Q2_code 01", "Q2_code 02", "Q2_code 03", "Q2_code 04", "Q2_code 05", "Q2_code 06", "Q2_code 07", "Q2_code 08", "Q2_code 09", "Q2_code 10", "Q3 Satisfaction towards NB Process", "Q4 Satisfaction towards NB Process verbatim", "Q4_code 01", "Q4_code 02", "Q4_code 03", "Q4_code 04", "Q4_code 05", "Q4_code 06", "Q4_code 07", "Q4_code 08", "Q4_code 09", "Q4_code 10", "Q5 Submit via Epp", "Q6 Resubmit any document", "Q7  Document Resubmit-code 01", "Q7  Document Resubmit-code 02", "Q7  Document Resubmit-code 03", "Q7  Document Resubmit-code 04", "Q7  Document Resubmit-code 05", "Q7  Document Resubmit-code 06", "Q7  Document Resubmit-code 07", "Q7  Document Resubmit-code 08", "Q7  Document Resubmit-code 09", "Q7  Document Resubmit-code 10", "Q8 Additional Support Verbatim", "Q8 Additional Support -code 01", "Q8 Additional Support -code 02", "Q8 Additional Support -code 03", "Q8 Additional Support -code 04", "Q8 Additional Support -code 05", "Q8 Additional Support -code 06", "Q8 Additional Support -code 07", "Q8 Additional Support -code 08", "Q8 Additional Support -code 09", "Q8 Additional Support -code 10", "Q9_Permit to Follow Up", "Q10_Request Manulife to call back", "Daily Flag Report" };
+            String[] Header_Name = { "BU", "Touchpoint", "Agent List Batch Number", "Dummy ID", "Agent Name", "Agent's Number", "Agent's Gender", "Channel", "Owner Name", "Owner's Gender", "Policy Number", "Product Name", "Interview Date", "Interviewer ID", "Call Outcome", "S1.Policy document status", "Q1 Recommend Advisor career", "Q2 Recommend Advisor Career Verbatim", "Q2_Code_01", "Q2_Code_02", "Q2_Code_03", "Q2_Code_04", "Q2_Code_05", "Q2_Code_06", "Q2_Code_07", "Q2_Code_08", "Q2_Code_09", "Q2_Code_10", "Q3 Satisfaction towards NB Process", "Q4 Satisfaction towards NB Process verbatim", "Q4_Code_01", "Q4_Code_02", "Q4_Code_03", "Q4_Code_04", "Q4_Code_05", "Q4_Code_06", "Q4_Code_07", "Q4_Code_08", "Q4_Code_09", "Q4_Code_10", "Q5 Submit via Epp", "Q6 Resubmit any document", "Q7  Document Resubmit-code 01", "Q7  Document Resubmit-code 02", "Q7  Document Resubmit-code 03", "Q7  Document Resubmit-code 04", "Q7  Document Resubmit-code 05", "Q7  Document Resubmit-code 06", "Q7  Document Resubmit-code 07", "Q7  Document Resubmit-code 08", "Q7  Document Resubmit-code 09", "Q7  Document Resubmit-code 10", "Q8 Additional Support Verbatim", "Q8_Code_01", "Q8_Code_02", "Q8_Code_03", "Q8_Code_04", "Q8_Code_05", "Q8_Code_06", "Q8_Code_07", "Q8_Code_08", "Q8_Code_09", "Q8_Code_10", "Q9_Permit to Follow Up", "Q10_Request Manulife to call back", "Daily Flag Report" };
 
             for (int i = 0; i <= Header_Name.Length - 1; i++)
             {
@@ -77,7 +77,7 @@ namespace Daily_Report
                 {
                     xlWorkSheet.Cells[1, i + 1].Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.DarkGray);
                 }
-                if (i == 15 || i == 19 || i == 32)
+                if (i == 15 || i == 17 || i == 29 || i == 52)
                 {
                     xlWorkSheet.Cells[1, i + 1].Font.Bold = true;
                 }
@@ -153,6 +153,12 @@ namespace Daily_Report
                 {
                     xlWorkSheet.Cells[(rowCnt - rowidex) + 2, 15] = xlRange2.Cells[IDcode[rowidex], 33].Value2.ToString().Trim();
                 }
+
+                if (xlRange2.Cells[IDcode[rowidex], 32].Value2.ToString().Trim() == "Completed Interview" || xlRange2.Cells[IDcode[rowidex], 32].Value2.ToString().Trim() == "Completed")
+                {
+                    xlWorkSheet.Cells[(rowCnt - rowidex) + 2, 15] = "Completed"; // Set text: " Completed"  to report.
+                }
+
                 else
                 {
                     xlWorkSheet.Cells[(rowCnt - rowidex) + 2, 15] = xlRange2.Cells[IDcode[rowidex], 32].Value2.ToString().Trim();
@@ -165,10 +171,17 @@ namespace Daily_Report
                 xlWorkSheet.Cells[(rowCnt - rowidex) + 2, 35].BorderAround(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThin, Excel.XlColorIndex.xlColorIndexAutomatic, Excel.XlColorIndex.xlColorIndexAutomatic);
                 xlWorkSheet.Cells[(rowCnt - rowidex) + 2, 36].BorderAround(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThin, Excel.XlColorIndex.xlColorIndexAutomatic, Excel.XlColorIndex.xlColorIndexAutomatic);
                 //Get Data
+
+                for (int j = 1; j <= Header_Name.Length; j++) // Set line to report
+                {
+                    xlWorkSheet.Cells[(rowCnt - rowidex) + 2, j].BorderAround(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThin, Excel.XlColorIndex.xlColorIndexAutomatic, Excel.XlColorIndex.xlColorIndexAutomatic);
+                    // Original Set Line" in Report"
+                    // But not full 
+                    //xlWorkSheet.Cells[(rowCnt - rowidex) + 2, reportidex[i]].BorderAround(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThin, Excel.XlColorIndex.xlColorIndexAutomatic, Excel.XlColorIndex.xlColorIndexAutomatic);
+                }
+  
                 for (int i = 0; i <= colidex.Length - 1; i++)
                 {
-                    xlWorkSheet.Cells[(rowCnt - rowidex) + 2, reportidex[i]].BorderAround(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThin, Excel.XlColorIndex.xlColorIndexAutomatic, Excel.XlColorIndex.xlColorIndexAutomatic);
-                    xlWorkSheet.Cells[(rowCnt - rowidex) + 2, 20].BorderAround(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThin, Excel.XlColorIndex.xlColorIndexAutomatic, Excel.XlColorIndex.xlColorIndexAutomatic);
                     if (i == 0)
                     {
                         xlWorkSheet.Cells[(rowCnt - rowidex) + 2, reportidex[i]] = xlRange2.Cells[IDcode[rowidex], colidex[i]].Value2.ToString().Trim();
@@ -176,17 +189,17 @@ namespace Daily_Report
                         {
                             if (xlRange2.Cells[IDcode[rowidex], colidex[i]].Value2.ToString().Trim() == xlRange1.Cells[getidx, 1].Value2.ToString().Trim())
                             {
-                                
+
                                 for (int colidx = 1; colidx <= 8; colidx++)
                                 {
                                     xlWorkSheet.Cells[(rowCnt - rowidex) + 2, reportidex[i] + colidx].HorizontalAlignment = 2;
                                     xlWorkSheet.Cells[(rowCnt - rowidex) + 2, 6].NumberFormat = "@";
                                     xlWorkSheet.Cells[(rowCnt - rowidex) + 2, 11].NumberFormat = "@";
-                                    if (colidx >1) // Get data form list to report data 
+                                    if (colidx >= 1)
                                     {
                                         xlWorkSheet.Cells[(rowCnt - rowidex) + 2, reportidex[i] + colidx] = xlRange1.Cells[getidx, colidx + 1].Value2.ToString().Trim();
                                     }
-                                    else 
+                                    else
                                     {
                                         try
                                         {
@@ -194,7 +207,7 @@ namespace Daily_Report
                                         }
                                         catch { }
                                     }
-                                    //xlWorkSheet.Cells[(rowCnt - rowidex) + 2, reportidex[i] + colidx] = xlRange1.Cells[getidx, colidx + 1].Value2.ToString().Trim();
+                                    
                                     xlWorkSheet.Cells[(rowCnt - rowidex) + 2, reportidex[i] + colidx].BorderAround(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThin, Excel.XlColorIndex.xlColorIndexAutomatic, Excel.XlColorIndex.xlColorIndexAutomatic);
                                 }
                                 //xlWorkSheet.Cells[(rowCnt - rowidex) + 2, reportidex[i] + 1] = xlRange1.Cells[getidx, 2].Value2.ToString().Trim();
@@ -317,12 +330,6 @@ namespace Daily_Report
                         }
                     }
                 }
-
-
-                for (int i = 1; i <= 66; i++)//set line_border in all data
-                {
-                    xlWorkSheet.Cells[(rowCnt - rowidex) + 2, i].BorderAround(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThin, Excel.XlColorIndex.xlColorIndexAutomatic, Excel.XlColorIndex.xlColorIndexAutomatic);
-                }
             }
             xlWorkSheet.Range["B:B"].ColumnWidth = 13.00;
             xlWorkSheet.Range["E:E"].ColumnWidth = 17.00;
@@ -334,10 +341,8 @@ namespace Daily_Report
             xlWorkSheet.Range["L:L"].ColumnWidth = 37.00;
             xlWorkSheet.Range["N:N"].ColumnWidth = 10.00;
             xlWorkSheet.Range["M:M"].ColumnWidth = 10.00;
-            //xlWorkSheet.Range["AJ:AJ"].ColumnWidth = 38.00;
-            //xlWorkSheet.Range["O:AI"].ColumnWidth = 8.11;
             xlWorkSheet.Range["P:P"].Columns.AutoFit();
-            xlWorkSheet.Range["R:R"].Columns.AutoFit();
+            xlWorkSheet.Range["R:R"].ColumnWidth = 10.00;
             xlWorkSheet.Range["T:T"].Columns.AutoFit();
             xlWorkSheet.Range["AG:AG"].Columns.AutoFit();
             //cleanup
